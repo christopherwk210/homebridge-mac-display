@@ -16,6 +16,10 @@
     "url": "https://github.com/christopherwk210/homebridge-mac-display/issues",
     "email": "christopherwk210@gmail.com"
   },
+  "engines": {
+    "node": ">=6.0.0",
+    "homebridge": ">=0.4.20"
+  },
   "keywords": [
     "homebridge-plugin",
     "homebridge",
