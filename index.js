@@ -1,7 +1,7 @@
 const package = require('./package.json');
 const exec = require('child_process').exec
 
-const Service, Characteristic;
+let Service, Characteristic;
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
