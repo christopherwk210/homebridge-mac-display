@@ -41,7 +41,7 @@ macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
   this.log('Mac display: ' + on);
 
   exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
-    if ((parseInt(stdout) < 4) !== on) {
+    if ((parseInt(stdout) >= 4) !== on) {
       on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
     }
     next();    
