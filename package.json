@@ -1,0 +1,26 @@
+{
+  "name": "homebridge-mac-display",
+  "version": "1.0.0",
+  "description": "Control your mac display with HomeBridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Anselmo <christopherwk210@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/christopherwk210/homebridge-mac-display.git"
+  },
+  "bugs": {
+    "url": "https://github.com/christopherwk210/homebridge-mac-display/issues",
+    "email": "christopherwk210@gmail.com"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "homebridge",
+    "mac",
+    "display",
+    "screen"
+  ]
+}
