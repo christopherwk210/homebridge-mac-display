@@ -1,5 +1,5 @@
 const package = require('./package.json');
-const exec = require('child_process').exec
+const exec = require('child_process').exec;
 
 let Service, Characteristic;
 
@@ -24,7 +24,7 @@ macDisplay.prototype.getServices = function() {
   switchService
     .getCharacteristic(Characteristic.On)
     .on('set', this.setSwitchOnCharacteristic.bind(this))
-    .on('get', this.getSwitchOnCharacteristic.bind(this))
+    .on('get', this.getSwitchOnCharacteristic.bind(this));
 
   this.informationService = informationService;
   this.switchService = switchService;
@@ -33,12 +33,17 @@ macDisplay.prototype.getServices = function() {
 
 macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
   exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
-    next(null, parseInt(stdout) < 4);
+    next(null, parseInt(stdout) >= 4);
   });
 }
  
 macDisplay.prototype.setSwitchOnCharacteristic = function(on, next) {
   this.log('Mac display: ' + on);
-  on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
-  next();
+
+  exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
+    if ((parseInt(stdout) < 4) !== on) {
+      on ? exec('caffeinate -u -t 1') : exec('pmset displaysleepnow');
+      next();  
+    }
+  });
 }
