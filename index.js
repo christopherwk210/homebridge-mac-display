@@ -33,7 +33,7 @@ macDisplay.prototype.getServices = function() {
 
 macDisplay.prototype.getSwitchOnCharacteristic = function(next) {
   exec('pmset -g powerstate IODisplayWrangler | tail -1 | cut -c29', (err, stdout, stderr) => {
-    next(parseInt(stdout) < 4);
+    next(null, parseInt(stdout) < 4);
   });
 }
  
